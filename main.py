@@ -147,10 +147,9 @@ class Initialization:
         url = input("Example format: 2022121715gm-0009-0000-e165b065: ")
         with urllib.request.urlopen("http://tenhou.net/0/log/?" + url) as logreader:
             content = logreader.read()
-            decodedxml = content.decode()
-            open(url + ".txt", "w", encoding="utf-8")
-            fileopen = open(url + ".txt", "w", encoding="utf-8")
-            fileopen.write(decodedxml)
+            decodedcontent = content.decode()
+            fileopen = open("./test/" + url + ".txt", "w", encoding="utf-8")
+            fileopen.write(decodedcontent)
             fileopen.close()
 
 Initialization()
