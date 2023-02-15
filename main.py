@@ -1,5 +1,5 @@
 """rondora1 main code"""
-import urllib.request
+from urllib.request import urlopen, Request
 class Initialization:
     """initialization code"""
     def __init__(self) -> None:
@@ -145,6 +145,8 @@ class Initialization:
             {"No":135,"paiName":"中","paiCode":"7z","paiNo":37}
             ]
         url = input("Example format: 2022121715gm-0009-0000-e165b065: ")
-        urllib.request.urlretrieve("http://tenhou.net/0/log/?" + url, "./test/" + url + ".txt")
+        openedurl = urlopen(Request("http://tenhou.net/0/log/?" + url, headers={'User-Agent': 'Mozilla'})).read()
+        with open("./test/" + url, mode="wb") as filewrite:
+            filewrite.write(openedurl)
 
 Initialization()
