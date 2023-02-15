@@ -1,4 +1,7 @@
-class initialization:
+"""rondora1 main code"""
+import urllib.request
+class Initialization:
+    """initialization code"""
     def __init__(self) -> None:
         paiyama = [
             {"No":0,"paiName":"一萬","paiCode":"1m","paiNo":1},
@@ -141,4 +144,13 @@ class initialization:
             {"No":134,"paiName":"中","paiCode":"7z","paiNo":37},
             {"No":135,"paiName":"中","paiCode":"7z","paiNo":37}
             ]
-            
+        url = input("Example format: 2022121715gm-0009-0000-e165b065: ")
+        with urllib.request.urlopen("http://tenhou.net/0/log/?" + url) as logreader:
+            content = logreader.read()
+            decodedxml = content.decode()
+            open(url + ".txt", "w", encoding="utf-8")
+            fileopen = open(url + ".txt", "w", encoding="utf-8")
+            fileopen.write(decodedxml)
+            fileopen.close()
+
+Initialization()
