@@ -4,8 +4,8 @@ from urllib.request import urlopen, Request
 url = input("Example format: 2022121715gm-0009-0000-e165b065: ")
 
 
-class RunPerEachProgramRun:
-    """run per each program open"""
+class WriteHaifuToFile:
+    """write haifu to file"""
 
     def __init__(self):
         openedurl = urlopen(Request("http://tenhou.net/0/log/?" +
@@ -153,7 +153,8 @@ paiyama = [
     {"No": 135, "paiName": "中", "paiCode": "7z", "paiNo": 37}
 ]
 
+
+
+WriteHaifuToFile()
 with open("./test/" + url, mode="r", encoding="utf-8") as readfile:
     unparsedfilecontent = readfile.read()
-
-RunPerEachProgramRun()
