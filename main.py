@@ -10,7 +10,7 @@ class WriteHaifuToFile:
     def __init__(self):
         openedurl = urlopen(Request("http://tenhou.net/0/log/?" +
                                     url, headers={'User-Agent': 'Mozilla'})).read()
-        with open("./test/" + url, mode="wb") as filewrite:
+        with open("./test/" + url + ".xml", mode="wb") as filewrite:
             filewrite.write(openedurl)
 
 
@@ -156,5 +156,5 @@ paiyama = [
 
 
 WriteHaifuToFile()
-with open("./test/" + url, mode="r", encoding="utf-8") as readfile:
+with open("./test/" + url + ".xml", mode="r", encoding="utf-8") as readfile:
     unparsedfilecontent = readfile.read()
