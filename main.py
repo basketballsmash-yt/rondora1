@@ -147,4 +147,7 @@ paiyama = [
         {"No": 134, "paiName": "中", "paiCode": "7z", "paiNo": 37},
         {"No": 135, "paiName": "中", "paiCode": "7z", "paiNo": 37}
         ]
-        
+
+with open("./test/" + url, mode="r", encoding="utf-8") as readfile:
+    unparsedfilecontent = readfile.read()
+
