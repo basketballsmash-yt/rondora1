@@ -1,17 +1,21 @@
 """rondora1 main code"""
 from urllib.request import urlopen, Request
 
-url = input("Example format: 2022121715gm-0009-0000-e165b065: ")
+HAIFULINK = None
+UNPARSEDXMLCONTENT = None
 
+def getHaifu():
+    global HAIFULINK
+    HAIFULINK = input("Example format: 2022121715gm-0009-0000-e165b065: ")
+    openedurl = urlopen(Request("http://tenhou.net/0/log/?" +
+                                HAIFULINK, headers={'User-Agent': 'Mozilla'})).read()
+    with open("./haifus/" + HAIFULINK + ".xml", mode="wb") as filewrite:
+        filewrite.write(openedurl)
 
-class WriteHaifuToFile:
-    """write haifu to file"""
-
-    def __init__(self):
-        openedurl = urlopen(Request("http://tenhou.net/0/log/?" +
-                                    url, headers={'User-Agent': 'Mozilla'})).read()
-        with open("./test/" + url + ".xml", mode="wb") as filewrite:
-            filewrite.write(openedurl)
+def parseXML():
+    with open("./haifus/" + HAIFULINK + ".xml", mode="r", encoding="utf-8") as readfile:
+        global UNPARSEDXMLCONTENT
+        UNPARSEDXMLCONTENT = readfile.read()
 
 
 paiyama = [
@@ -155,6 +159,4 @@ paiyama = [
 
 
 
-WriteHaifuToFile()
-with open("./test/" + url + ".xml", mode="r", encoding="utf-8") as readfile:
-    unparsedfilecontent = readfile.read()
+getHaifu()
