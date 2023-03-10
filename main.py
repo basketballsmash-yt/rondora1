@@ -1,14 +1,17 @@
 """rondora1 main code"""
 from urllib.request import urlopen, Request
 
-haifulink = input("Example format: 2022121715gm-0009-0000-e165b065: ")
+haifulink = input(
+    "Example format: 2022121715gm-0009-0000-e165b065(type n to skip) \n ログIDを入力してください(スキップする場合はnと入力しても問題ありません): ")
+
 
 def get_haifu():
     """Haifu downloader, might not work on matches that you didnt play"""
     openedurl = urlopen(Request("http://tenhou.net/0/log/?" +
-                                haifulink, headers={'User-Agent': 'Mozilla'})).read()
+                        haifulink, headers={'User-Agent': 'Mozilla'})).read()
     with open("./haifus/" + haifulink + ".xml", mode="wb") as filewrite:
         filewrite.write(openedurl)
+
 
 def parse_haifu_xml():
     """make the haifu a readable form, write it to another file and/or array"""
@@ -154,7 +157,6 @@ paiyama = [
     {"No": 134, "paiName": "中", "paiCode": "7z", "paiNo": 37},
     {"No": 135, "paiName": "中", "paiCode": "7z", "paiNo": 37}
 ]
-
 
 
 get_haifu()
