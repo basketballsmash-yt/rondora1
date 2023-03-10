@@ -2,7 +2,8 @@
 from urllib.request import urlopen, Request
 
 haifulink = input(
-    "Example format: 2022121715gm-0009-0000-e165b065(type n to skip) \n ログIDを入力してください(スキップする場合はnと入力しても問題ありません): ")
+    "Example format: 2022121715gm-0009-0000-e165b065(type n to skip) " +
+    "\n ログIDを入力してください(スキップする場合はnと入力しても問題ありません): ")
 
 
 def get_haifu():
